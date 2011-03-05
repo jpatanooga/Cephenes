@@ -1,0 +1,25 @@
+This is a sensor platform based on Android.
+
+The idea is that:
+
+- java is a more accessible language than embedded C to the masses
+- the Android platform takes care of a lot of the subsystem / OS things for us
+- we can get ARM9 based Android boards online for around 80 bucks
+
+
+Intenton and Audience
+
+- we make no allusions that this is a production grade codebase
+- its meant as a prototype to work out ideas, more hackeration than anything
+- its meant for anyone who'd like to duct tape a few pieces together and try out some sensor ideas
+- code should be accessible to 2nd year comp sci students or curious hackers
+
+
+Origin of the name "Cephenes"
+
+Cephenes is latin for the "drones in bee hive"
+
+
+Questions? Comments? 
+
+email: jpatterson at floe dot tv

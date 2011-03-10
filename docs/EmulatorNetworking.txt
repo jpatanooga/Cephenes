@@ -1,0 +1,32 @@
+How to get packets in and out of the emulator may not be directly intuitive, so below are a few notes on how to do it.
+
+On the host machine that runs the emulator, open a terminal window and telnet to the emulator instance: 
+
+telnet localhost 5554 
+
+This will take you into the ADB emulator console. Then setup packet forwarding on the port you are sending udp packets to: 
+
+redir add udp:<host machine port>:<emulator listen port> 
+
+example: 
+
+redir add udp:4444:4444 
+
+This will then have the emulator "listen" on your local machine's port 4444 for UDP packets, and forward those to the emulator's ETH adapter on port 4444 (which can be changed to whatever you need). 
+
+I havent tried this with other external machines, but I struggled getting this to work for a while. Also, any "servers" listening for packets inside android (2.0) should be listening on IP 10.0.2.15 (android emulator's own Eth adapter), and in this case on port 4444. 
+
+
+
+Packets out of the Emulator to local machine's listening process
+
+In the case where you want to broadcast UDP packets out of the android emulator to the local machine, you wont need to setup a port redir, but you will want to send them out to IP address 10.0.2.2 as this is 
+the "loopback" address on the host computer, and you can send them directly to the port it is listening on. 
+
+It takes some getting used to and isnt terribly straightforward, but I eventually got it working. Hopefully this helps.
+
+ Permissions
+ 
+ You'll also need to give update the "AndroidManifest.xml" file to allow for internet usage by the application.
+ 
+ In this case you need to setup: <uses-permission android:name="android.permission.INTERNET" />
